@@ -1,0 +1,12 @@
+Sub DeleteFilteredRange
+  ActiveSheet.AutoFilter.Range.Offset(1,0).Rows.SpecialCells(xlCellTypeVisible).Delete(xlShiftUp)
+End Sub
+
+Sub FilterAndDelete
+''' https://www.ozgrid.com/VBA/row-delete-criteria.htm
+''' Not Working, rRange needs to be defined. See above link
+  With rRange 'Filter, offset(to exclude headers) and delete visible rows       
+    .AutoFilter Field:=lCol, Criteria1:=strCriteria       
+    .Offset(1, 0).SpecialCells(xlCellTypeVisible).EntireRow.Delete     
+  End With
+End Sub
